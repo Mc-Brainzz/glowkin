@@ -2,6 +2,8 @@
 
 **A glowing creature grown from how you use your AI.**
 
+**[Try it in your browser](https://mc-brainzz.github.io/glowkin/)**: you will meet a random stranger. Grow your own below.
+
 ![A glowkin share card: a green glowing creature called The Operator, with the usage numbers that shaped it](docs/img/card.png)
 
 glowkin reads your AI coding history on your own machine, turns it into a handful of numbers, and grows a creature from them. Night owls glow violet. People whose agents run a lot of tools get more tendrils. No two come out the same.
