@@ -1,0 +1,21 @@
+{
+  "name": "glowkin",
+  "version": "0.1.0",
+  "description": "A glowing desktop creature grown from how you use your AI.",
+  "type": "module",
+  "license": "MIT",
+  "repository": "github:Mc-Brainzz/glowkin",
+  "scripts": {
+    "hatch": "node src/hatch.mjs",
+    "start": "node scripts/serve.mjs",
+    "overlay": "tauri dev",
+    "overlay:build": "tauri build --no-bundle",
+    "test": "node --test \"tests/*.test.mjs\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4"
+  }
+}

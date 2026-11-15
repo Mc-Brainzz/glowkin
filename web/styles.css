@@ -1,0 +1,165 @@
+:root {
+  --hue: 190;
+  --accent: 320;
+  --ink: #e9ecf8;
+  --muted: #8f97b5;
+  --line: rgba(255, 255, 255, 0.09);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; }
+
+body {
+  overflow: hidden;
+  color: var(--ink);
+  font: 15px/1.5 ui-rounded, "SF Pro Rounded", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  background:
+    radial-gradient(120% 90% at 30% 35%, #0b1230 0%, #060916 55%, #020308 100%);
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: default;
+}
+#stage.can-grab { cursor: grab; }
+#stage.grabbing { cursor: grabbing; }
+
+.brand {
+  position: fixed;
+  top: 22px;
+  left: 26px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  pointer-events: none;
+}
+.mark {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: hsl(var(--hue) 95% 78%);
+  text-shadow: 0 0 18px hsl(var(--hue) 100% 60% / 0.55);
+}
+.tag { color: var(--muted); font-size: 13px; }
+
+.card {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  bottom: 22px;
+  width: 372px;
+  padding: 26px 26px 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(12, 16, 36, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 0 60px hsl(var(--hue) 100% 50% / 0.07);
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: hsl(var(--accent) 95% 76%);
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: hsl(var(--hue) 100% 84%);
+  text-shadow: 0 0 26px hsl(var(--hue) 100% 60% / 0.45);
+}
+
+.lede { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+.lede code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+  font: 13px ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+
+.traits { list-style: none; margin: 0; padding: 0; flex: 1; }
+.traits li { padding: 11px 0; border-top: 1px solid var(--line); }
+.traits .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.traits .label { color: var(--muted); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+.traits .value { font-weight: 650; color: hsl(var(--hue) 95% 80%); text-align: right; }
+.traits .reason { margin: 3px 0 0; font-size: 13.5px; color: #c3c9e0; }
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+button {
+  font: inherit;
+  font-weight: 650;
+  color: #060916;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  background: hsl(var(--hue) 95% 72%);
+  box-shadow: 0 0 22px hsl(var(--hue) 100% 60% / 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+button:hover { transform: translateY(-1px); box-shadow: 0 0 30px hsl(var(--hue) 100% 60% / 0.7); }
+button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+button.ghost {
+  color: hsl(var(--hue) 95% 80%);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px hsl(var(--hue) 80% 70% / 0.55);
+}
+button.ghost:hover { box-shadow: inset 0 0 0 1px hsl(var(--hue) 90% 75%), 0 0 22px hsl(var(--hue) 100% 60% / 0.35); }
+
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.seed { color: var(--muted); font: 12px ui-monospace, "Cascadia Code", Consolas, monospace; }
+
+#share { display: none; }
+body.card-only > :not(#share) { display: none; }
+body.card-only #share { display: block; position: fixed; inset: 0; width: 100vw; height: 100vh; object-fit: contain; }
+
+.hint {
+  position: fixed;
+  left: 26px;
+  bottom: 20px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .brand { top: 14px; left: 16px; flex-direction: column; gap: 0; }
+  .card {
+    top: auto;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    max-height: 48vh;
+    padding: 18px 18px 14px;
+  }
+  h1 { font-size: 26px; }
+  .hint { display: none; }
+}

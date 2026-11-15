@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>glowkin</title>
+  <meta name="description" content="A glowing creature grown from how you use your AI.">
+  <link rel="stylesheet" href="./web/styles.css">
+</head>
+<body>
+  <canvas id="stage" aria-label="Your glowkin. Drag it around, or click it."></canvas>
+
+  <header class="brand">
+    <span class="mark">glowkin</span>
+    <span class="tag">grown from how you use your AI</span>
+  </header>
+
+  <aside id="card" class="card" aria-live="polite">
+    <div class="top">
+      <p class="eyebrow" id="eyebrow"></p>
+      <span class="seed" id="seed"></span>
+    </div>
+    <h1 id="title"></h1>
+    <p class="lede" id="lede"></p>
+    <ul class="traits" id="traits"></ul>
+    <div class="actions">
+      <button id="swap" type="button"></button>
+      <button id="save" type="button" class="ghost">Save card</button>
+    </div>
+  </aside>
+
+  <p class="hint">Drag it around. Click to poke it.</p>
+
+  <script type="module" src="./web/app.js"></script>
+</body>
+</html>
