@@ -1,7 +1,9 @@
 // Demo page: shows the creature hatched into genome.json, or a made-up stranger.
 import { Creature } from './creature.js';
 import { toGenome, describe } from '../src/genome.js';
-import { downloadCard, renderCard } from './card.js';
+import { REPO, downloadCard, renderCard } from './card.js';
+
+const LOCAL = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
 
 const canvas = document.getElementById('stage');
 const ctx = canvas.getContext('2d');
@@ -71,10 +73,16 @@ function show(data, isMine) {
     lede.textContent = `Grown from ${fmt.format(stats.prompts)} prompts and ${fmt.format(stats.tools)} tool calls across ${fmt.format(stats.projects)} projects. Only the counts were read, and nothing left this machine.`;
   } else {
     lede.append('A made-up usage profile, to show how different habits grow a different creature.');
-    if (!mine) {
+    if (!mine && LOCAL) {
       const code = document.createElement('code');
       code.textContent = 'npm run hatch';
       lede.append(' Run ', code, ' to grow your own.');
+    } else if (!mine) {
+      // On the public demo there is nothing to run, so point visitors at the repo.
+      const link = Object.assign(document.createElement('a'), {
+        href: `https://${REPO}`, textContent: 'Grow your own on GitHub', target: '_blank', rel: 'noopener',
+      });
+      lede.append(' ', link, '.');
     }
   }
 
